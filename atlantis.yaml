@@ -1,0 +1,19 @@
+version: 3
+automerge: true
+projects:
+- name: project-dev
+  dir: example/dev
+  workspace: default
+  terraform_version: v0.12.21
+  autoplan:
+    when_modified: ["*.tf", "../modules/**.tf"]
+    enabled: true
+  apply_requirements: [mergeable, approved]
+- name: project-prd
+  dir: example/prd
+  workspace: default
+  terraform_version: v0.12.21
+  autoplan:
+    when_modified: ["*.tf", "../modules/**.tf"]
+    enabled: true
+  apply_requirements: [mergeable, approved]
